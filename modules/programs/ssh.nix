@@ -305,6 +305,12 @@ let
         '';
       };
 
+      remoteCommand = mkOption {
+        type = types.nullOr types.str;
+        default = null;
+        description = "Specifies a command to execute on the remote machine after successfully connecting to the server.";
+      };
+
       dynamicForwards = mkOption {
         type = types.listOf dynamicForwardModule;
         default = [ ];
@@ -426,6 +432,7 @@ let
       ++ optional (!cf.checkHostIP) "  CheckHostIP no"
       ++ optional (cf.proxyCommand != null) "  ProxyCommand ${cf.proxyCommand}"
       ++ optional (cf.proxyJump != null) "  ProxyJump ${cf.proxyJump}"
+      ++ optional (cf.remoteCommand != null) "  RemoteCommand ${cf.remoteCommand}"
       ++ optional (cf.addKeysToAgent != null) "  AddKeysToAgent ${cf.addKeysToAgent}"
       ++ optional (
         cf.hashKnownHosts != null

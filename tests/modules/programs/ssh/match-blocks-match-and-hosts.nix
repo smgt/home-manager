@@ -12,6 +12,7 @@
         xyz = {
           match = "host xyz canonical";
           port = 2223;
+          remoteCommand = "/bin/false";
         };
 
         "* !github.com" = {
